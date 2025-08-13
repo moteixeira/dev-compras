@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="https://cdn.hugeicons.com/font/hgi-stroke-rounded.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+  <title>Compras da semana</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <main id="app">
+    <div class="container">
+      <header class="header">
+        <nav>
+          <a href="#" class="back-link">
+            <i class="hgi hgi-stroke hgi-arrow-left-02">
+            <span>Voltar</span>
+            </i>
+          </a>
+        </nav>
+        <h1 class="title">Compras da semana</h1>
+      </header>
+      <section class="block">
+        <form id="form-add-item" class="form-line">
+          <input
+            type="text"
+            id="new-item"
+            name="new-item"
+            placeholder="Adicione um novo item"
+            autocomplete="off"
+            required
+          />
+          <button type="submit" id="btn-add" class="btn btn--primary">
+            Adicionar item
+          </button>
+        </form>
+      </section>
+      <section class="block">
+        <ul id="shopping-list" class="list">
+        </ul>
+      </section>
+      <div id="alert" class="alert alert--danger">
+        <div class="alert-left">
+          <i class="hgi hgi-stroke hgi-alert-circle"></i>
+          <span>O item foi removido da lista</span>
+        </div>
+        <button class="btn-icon alert-close" title="Fechar">
+          <i class="hgi hgi-stroke hgi-cancel-02"></i>
+        </button>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

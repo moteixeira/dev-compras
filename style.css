@@ -1,0 +1,233 @@
+/* Reset simples */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+img { display: block; max-width: 100%; }
+ul { list-style: none; }
+
+/* ===== Tokens do styleguide ===== */
+:root{
+  /* Cores base */
+  --bg: #F5F8FB;
+  --panel: #FFFFFF;
+
+  /* Tipos */
+  --text: #0B0B12;      /* títulos */
+  --label: #374151;     /* labels */
+  --muted: #9CA3AF;     /* placeholder */
+
+  /* Marca */
+  --brand-500: #CA3B84; /* default */
+  --brand-600: #A52C6B; /* hover */
+
+  /* Bordas */
+  --border: #D1D5DB;
+
+  /* Alerta */
+  --danger-bg: #D24747;
+  --danger-text: #FFFFFF;
+  --danger-border: #B23737;
+
+  /* Raio */
+  --r: 12px;
+  --r-lg: 14px;
+  --r-pill: 999px;
+
+  /* Tipografia */
+  --font: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial;
+  --title-size: 24px; 
+  --title-lh: 32px; 
+  --title-w: 700;
+  --label-size: 16px; 
+  --label-lh: 20px; 
+  --label-w: 600;
+  --para-size: 16px;  
+  --para-lh: 20px;  
+  --para-w: 500;
+  --link-size: 14px;  
+  --link-lh: 16px; 
+  --link-w: 500;
+  --w-bold: 700;
+  --w-semibold: 600;
+  --w-medium: 500;
+
+}
+
+/* Base */
+body{
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+}
+.container{ width: min(760px, 92vw); margin-inline: auto; padding: 24px 0 40px; }
+
+/* HEADER */
+.header{ margin-bottom: 20px; }
+
+.back-link{
+  display: inline-flex; align-items: center; gap: 6px;
+  color: #6B7280; /* cinza do link no guia */
+  font-size: var(--link-size); line-height: var(--link-lh); font-weight: var(--w-medium);
+  text-decoration: none;
+}
+.back-link:hover{ text-decoration: underline; }
+.icon{ width: 16px; height: 16px; }
+
+.title{
+  margin-top: 8px;
+  font-size: var(--title-size);
+  line-height: var(--title-lh);
+  font-weight: var(--title-w);
+  color: var(--text);
+}
+
+/* FORM */
+
+.block{ margin-top: 8px; }
+
+.form-line{
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 12px;
+  margin-top: 16px;
+  margin-bottom: 22px;
+}
+
+/* Text field */
+#new-item{
+  height: 44px;
+  padding: 0 14px;
+  border: 1px solid var(--border);      /* default */
+  border-radius: var(--r-pill);
+  background: var(--panel);
+  color: var(--text);
+  outline: none;
+  transition: border-color .15s, box-shadow .15s;
+}
+#new-item::placeholder{ color: var(--muted); }
+#new-item:hover{ border-color: #BFC6D3; }   /* hover discreto */
+#new-item:focus{
+  border-color: var(--brand-500);           /* active/focus */
+  box-shadow: 0 0 0 3px rgba(202,59,132,.20);
+}
+#new-item:disabled{
+  opacity: .6;
+  cursor: not-allowed;
+}
+
+/* Button primário */
+.btn{
+  display: inline-flex; align-items: center; justify-content: center;
+  height: 44px; padding: 0 18px; border-radius: var(--r-pill);
+  border: 1px solid transparent; cursor: pointer;
+  font-weight: var(--w-semibold);
+}
+.btn--primary{ background: var(--brand-500); color: #fff; }
+.btn--primary:hover{ background: var(--brand-600); }
+.btn:disabled{ opacity: .6; cursor: not-allowed; }
+
+/* LIST AND CHECKBOX */
+.list{ display: grid; gap: 12px; }
+
+.item{
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  padding: 14px 16px;
+  font-size: var(--label-size);
+  line-height: var(--label-lh); 
+  font-weight: var(--w-semibold);
+}
+
+.item-left{ display: flex; align-items: center; gap: 10px; }
+.label{
+  font-size: var(--label-size); line-height: var(--label-lh); font-weight: var(--w-semibold);
+  color: var(--text);
+}
+
+/* Checkbox estilizado */
+/* Checkbox — estilo do styleguide */
+.check{
+  appearance: none; -webkit-appearance: none;
+  width: 18px; height: 18px;
+  border-radius: 6px;
+  border: 1px solid var(--border);      /* default */
+  background: #fff;
+  display: grid; place-items: center;
+  cursor: pointer;
+  transition: border-color .15s, box-shadow .15s, background-color .15s;
+}
+.check:hover{
+  border-color: #BFC6D3;                /* hover */
+}
+.check::after{
+  content:"";
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: transparent;              /* sem bolinha no default */
+  transition: background-color .15s;
+}
+.check:checked{
+  border-color: var(--brand-500);
+  box-shadow: 0 0 0 3px rgba(202,59,132,.18);
+}
+.check:checked::after{
+  background: var(--brand-500);         /* bolinha rosa no centro */
+}
+/* Acesso por teclado bem visível */
+.check:focus-visible{
+  outline: 2px solid var(--brand-500);
+  outline-offset: 2px;
+}
+.check:disabled{
+  opacity: .6;
+  cursor: not-allowed;
+}
+.check:checked + .label { opacity:.75; text-decoration: line-through; }
+
+/* Foco visível em botões e links */
+.btn:focus-visible,
+.btn-icon:focus-visible,
+.back-link:focus-visible{
+  outline: 2px solid var(--brand-500);
+  outline-offset: 3px;
+  border-radius: 8px;
+}
+
+
+/* Botão lixeira (ícone do styleguide) */
+.btn-icon{
+  width: 32px; height: 32px; display: grid; place-items: center;
+  border: 0; background: transparent; cursor: pointer;
+}
+.btn-icon .icon{ width: 18px; height: 18px; }
+
+/* Alerta */
+.alert{
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  margin-top: 22px; padding: 12px 14px;
+  border: 1px solid var(--danger-border);
+  border-radius: var(--r-lg);
+  background: var(--danger-bg);
+  color: var(--danger-text);
+}
+.alert-left{ display: inline-flex; align-items: center; gap: 10px; }
+.alert .icon{ filter: brightness(0) invert(1); } /* deixa ícone branco se for SVG escuro */
+.alert-close{ color: var(--danger-text); }
+
+/* Empilha input e botão em telas pequenas */
+@media (max-width: 520px){
+  .form-line{
+    grid-template-columns: 1fr;   /* input em cima, botão abaixo */
+  }
+  .btn{ width: 100%; }            /* botão ocupa a largura toda */
+}
+
+/* Ajustes finos para telas bem estreitas */
+@media (max-width: 400px){
+  .item{ padding: 12px 12px; }             /* cards com menos padding */
+  .item-left{ gap: 8px; }                  /* menos espaço entre checkbox e texto */
+  .btn-icon{ width: 36px; height: 36px; }  /* alvo de toque um pouco maior */
+  .title{ font-size: 22px; line-height: 28px; } /* título levemente menor */
+}
+
