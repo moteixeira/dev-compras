@@ -60,12 +60,13 @@ body{
 }
 .container{ width: min(760px, 92vw); margin-inline: auto; padding: 24px 0 40px; }
 
+
 /* HEADER */
 .header{ margin-bottom: 20px; }
 
 .back-link{
   display: inline-flex; align-items: center; gap: 6px;
-  color: #6B7280; /* cinza do link no guia */
+  color: var(--brand-500); /* cinza do link no guia */
   font-size: var(--link-size); line-height: var(--link-lh); font-weight: var(--w-medium);
   text-decoration: none;
 }
