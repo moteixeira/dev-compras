@@ -28,6 +28,7 @@ form.addEventListener('submit', function (e) {
   li.innerHTML = `
     <label class="item-left">
       <input type="checkbox" class="check" />
+      <i class="hgi hgi-stroke hgi-tick-01 check-mark" aria-hidden="true"></i>
       <span class="label">${escapeHtml(text)}</span>
     </label>
     <button class="btn-icon btn-delete" title="Remover">

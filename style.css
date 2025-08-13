@@ -140,7 +140,17 @@ body{
   font-weight: var(--w-semibold);
 }
 
-.item-left{ display: flex; align-items: center; gap: 10px; }
+.item-left{
+  display: grid;
+  grid-template-columns: 18px 1fr;
+  align-items: center;
+  gap: 10px;
+}
+
+.item-left .check,
+.item-left .check-mark{ grid-column: 1 / 2; grid-row: 1 / 2; }
+.item-left .label{ grid-column: 2 / 3; }
+
 .label{
   font-size: var(--label-size); line-height: var(--label-lh); font-weight: var(--w-semibold);
   color: var(--text);
@@ -149,43 +159,31 @@ body{
 /* Checkbox estilizado */
 /* Checkbox — estilo do styleguide */
 .check{
-  appearance: none; -webkit-appearance: none;
-  width: 18px; height: 18px;
-  border-radius: 6px;
-  border: 1px solid var(--border);      /* default */
-  background: #fff;
-  display: grid; place-items: center;
-  cursor: pointer;
-  transition: border-color .15s, box-shadow .15s, background-color .15s;
+  appearance:none; -webkit-appearance:none;
+  width:18px; height:18px; border-radius:6px;
+  border:1px solid var(--border); background:#fff;
+  position:relative; cursor:pointer;
+  transition:border-color .15s, box-shadow .15s, background-color .15s;
 }
-.check:hover{
-  border-color: #BFC6D3;                /* hover */
-}
-.check::after{
-  content:"";
-  width: 10px; height: 10px;
-  border-radius: 50%;
-  background: transparent;              /* sem bolinha no default */
-  transition: background-color .15s;
-}
+.check::after{ content:none !important; }          /* desativa bolinha antiga */
+.check:hover{ border-color:#BFC6D3; }
+.check:focus-visible{ outline:2px solid var(--brand-500); outline-offset:2px; }
 .check:checked{
-  border-color: var(--brand-500);
-  box-shadow: 0 0 0 3px rgba(202,59,132,.18);
+  background:var(--brand-500);
+  border-color:var(--brand-500);
+  box-shadow:0 0 0 3px rgba(202,59,132,.18);
 }
-.check:checked::after{
-  background: var(--brand-500);         /* bolinha rosa no centro */
-}
-/* Acesso por teclado bem visível */
-.check:focus-visible{
-  outline: 2px solid var(--brand-500);
-  outline-offset: 2px;
-}
-.check:disabled{
-  opacity: .6;
-  cursor: not-allowed;
-}
-.check:checked + .label { opacity:.75; text-decoration: line-through; }
 
+/* ícone da icon-font hgi: só aparece quando marcado */
+.check-mark{
+  font-size:12px; line-height:1; color:#fff;
+  opacity:0; transition:opacity .12s ease-in-out;
+  pointer-events:none; justify-self:center; align-self:center;
+}
+.check:checked + .check-mark{ opacity:1; }
+
+/* opcional: riscar o texto quando marcado */
+.check:checked ~ .label{ opacity:.85; text-decoration:line-through; }
 /* Foco visível em botões e links */
 .btn:focus-visible,
 .btn-icon:focus-visible,
